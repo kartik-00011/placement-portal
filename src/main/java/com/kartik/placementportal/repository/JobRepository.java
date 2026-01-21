@@ -1,4 +1,7 @@
 package com.kartik.placementportal.repository;
 
-public class JobRepository {
+import com.kartik.placementportal.entity.Job;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface JobRepository extends JpaRepository<Job, Long> {
 }

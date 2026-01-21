@@ -1,4 +1,5 @@
 package com.kartik.placementportal.entity;
+import com.kartik.placementportal.enums.InterviewType;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;

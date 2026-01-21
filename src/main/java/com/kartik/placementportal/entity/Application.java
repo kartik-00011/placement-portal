@@ -1,5 +1,6 @@
 package com.kartik.placementportal.entity;
 
+import com.kartik.placementportal.enums.ApplicationStatus;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -36,5 +37,9 @@ public class Application {
         this.job = job;
         this.status = ApplicationStatus.APPLIED;
     }
+    public void setStatus(ApplicationStatus status) {
+        this.status = status;
+    }
+
 
 }

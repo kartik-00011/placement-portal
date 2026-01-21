@@ -1,4 +1,4 @@
-package com.kartik.placementportal.entity;
+package com.kartik.placementportal.enums;
 
 public enum ApplicationStatus {
     APPLIED,

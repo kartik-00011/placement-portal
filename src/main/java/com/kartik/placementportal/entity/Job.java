@@ -1,5 +1,6 @@
 package com.kartik.placementportal.entity;
 
+import com.kartik.placementportal.enums.JobStatus;
 import jakarta.persistence.*;
 
 @Entity
@@ -36,4 +37,13 @@ public class Job {
         this.company = company;
         this.status = JobStatus.OPEN;
     }
+    public JobStatus getStatus() {
+        return status;
+    }
+
+
+    public double getMinCgpa() {
+        return minCgpa;
+    }
+
 }

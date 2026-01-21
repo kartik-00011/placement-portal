@@ -31,4 +31,7 @@ public class Student {
         this.branch = branch;
         this.graduationYear = graduationYear;
     }
+    public double getCgpa() {
+        return cgpa;
+    }
 }

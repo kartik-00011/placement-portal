@@ -1,5 +1,6 @@
 package com.kartik.placementportal.entity;
 
+import com.kartik.placementportal.enums.Role;
 import jakarta.persistence.*;
 
 @Entity
