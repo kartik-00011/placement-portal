@@ -41,9 +41,18 @@ public class Job {
         return status;
     }
 
+    public String getTitle() {
+        return title;
+    }
+    public String getDescription(){
+        return description;
+    }
 
     public double getMinCgpa() {
         return minCgpa;
+    }
+    public Long getId(){
+        return id;
     }
 
 }

@@ -40,6 +40,12 @@ public class Application {
     public void setStatus(ApplicationStatus status) {
         this.status = status;
     }
+    public Long getId(){
+        return id;
+    }
+    public ApplicationStatus getStatus(){
+        return status;
+    }
 
 
 }

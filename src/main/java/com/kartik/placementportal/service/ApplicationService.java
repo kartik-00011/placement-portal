@@ -10,6 +10,8 @@ import com.kartik.placementportal.repository.ApplicationRepository;
 import com.kartik.placementportal.repository.JobRepository;
 import com.kartik.placementportal.repository.StudentRepository;
 import org.springframework.stereotype.Service;
+import com.kartik.placementportal.dto.ApplicationResponseDTO;
+
 
 @Service
 public class ApplicationService {
@@ -26,7 +28,7 @@ public class ApplicationService {
         this.applicationRepository = applicationRepository;
     }
 
-    public Application applyToJob(Long studentId, Long jobId) {
+    public ApplicationResponseDTO applyToJob(Long studentId, Long jobId) {
 
         // 1. Fetch student
         Student student = studentRepository.findById(studentId)
@@ -59,6 +61,15 @@ public class ApplicationService {
         application.setStatus(ApplicationStatus.APPLIED);
 
         // 7. Save application
-        return applicationRepository.save(application);
+        Application savedApplication = applicationRepository.save(application);
+
+
+        return new ApplicationResponseDTO(
+                savedApplication.getId(),
+                student.getId(),
+                job.getId(),
+                savedApplication.getStatus().toString()
+
+        );
     }
 }

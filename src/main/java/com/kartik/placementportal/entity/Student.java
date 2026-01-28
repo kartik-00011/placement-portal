@@ -34,4 +34,7 @@ public class Student {
     public double getCgpa() {
         return cgpa;
     }
+    public Long getId(){
+        return id;
+    }
 }
