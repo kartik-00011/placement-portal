@@ -4,6 +4,8 @@ import com.kartik.placementportal.dto.JobResponseDTO;
 import com.kartik.placementportal.entity.Job;
 import com.kartik.placementportal.repository.JobRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -16,17 +18,17 @@ public class JobService {
         this.jobRepository=jobRepository;
     }
 
-    public List<JobResponseDTO> getAllJobs() {
-        return jobRepository.findAll()
-                .stream()
+    public Page<JobResponseDTO> getJobs(Pageable pageable) {
+        return jobRepository.findAll(pageable)
                 .map(job -> new JobResponseDTO(
                         job.getId(),
                         job.getTitle(),
                         job.getDescription(),
                         job.getMinCgpa(),
                         job.getStatus().name()
-                ))
-                .toList();
+                ));
     }
+
+
 
 }
