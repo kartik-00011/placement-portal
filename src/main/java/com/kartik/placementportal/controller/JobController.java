@@ -38,14 +38,15 @@ public class JobController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
             @RequestParam(defaultValue = "id") String sortBy,
-            @RequestParam(defaultValue = "asc") String direction
+            @RequestParam(defaultValue = "asc") String direction,
+            @RequestParam(required = false) Double minCgpa
     ) {
         Sort sort = direction.equalsIgnoreCase("desc")
                 ? Sort.by(sortBy).descending()
                 : Sort.by(sortBy).ascending();
 
         Pageable pageable = PageRequest.of(page,size,sort);
-        Page<JobResponseDTO> jobs = jobService.getJobs(pageable);
+        Page<JobResponseDTO> jobs = jobService.getJobs(minCgpa,pageable);
 
 
         ApiResponse<Page<JobResponseDTO>> response =

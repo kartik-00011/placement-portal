@@ -18,17 +18,17 @@ public class JobService {
         this.jobRepository=jobRepository;
     }
 
-    public Page<JobResponseDTO> getJobs(Pageable pageable) {
-        return jobRepository.findAll(pageable)
-                .map(job -> new JobResponseDTO(
-                        job.getId(),
-                        job.getTitle(),
-                        job.getDescription(),
-                        job.getMinCgpa(),
-                        job.getStatus().name()
-                ));
+    public Page<JobResponseDTO> getJobs(
+            Double minCgpa,
+            Pageable pageable
+    ) {
+        Page<Job> jobsPage = jobRepository.findJobsWithMinCgpa(minCgpa,pageable);
+        return jobsPage.map(job -> new JobResponseDTO(
+                job.getId(),
+                job.getTitle(),
+                job.getDescription(),
+                job.getMinCgpa(),
+                job.getStatus().name()
+        ));
     }
-
-
-
 }
