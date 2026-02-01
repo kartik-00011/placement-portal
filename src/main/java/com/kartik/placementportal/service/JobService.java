@@ -20,9 +20,17 @@ public class JobService {
 
     public Page<JobResponseDTO> getJobs(
             Double minCgpa,
+            String title,
+            String company,
             Pageable pageable
     ) {
-        Page<Job> jobsPage = jobRepository.findJobsWithMinCgpa(minCgpa,pageable);
+        Page<Job> jobsPage = jobRepository.findJobsWithFilters(
+                minCgpa,
+                title,
+                company,
+                pageable
+        );
+
         return jobsPage.map(job -> new JobResponseDTO(
                 job.getId(),
                 job.getTitle(),

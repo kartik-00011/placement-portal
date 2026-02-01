@@ -12,9 +12,13 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     @Query("""
     SELECT j FROM Job j
     WHERE (:minCgpa IS NULL OR j.minCgpa <= :minCgpa)
+    AND (:title IS NULL OR LOWER(j.title) LIKE LOWER(CONCAT('%', :title, '%')))
+    AND (:company IS NULL OR LOWER(j.company.name) LIKE LOWER(CONCAT('%', :company, '%')))
     """)
-    Page<Job> findJobsWithMinCgpa(
+    Page<Job> findJobsWithFilters(
                 @Param("minCgpa") Double minCgpa,
+                @Param("title") String title,
+                @Param("company") String company,
                 Pageable pageable
     );
 
